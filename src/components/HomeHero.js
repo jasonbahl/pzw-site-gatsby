@@ -32,11 +32,11 @@ const HeroIntro = styled.div`
 `
 
 const HomeHero = () => {
-  const props = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query HomeHeroQuery {
       wpPage(slug: {eq: "home"}) {
         id
-        aclHomeHero {
+        acfHomeHero {
           heading
           image {
             sourceUrl
@@ -48,9 +48,9 @@ const HomeHero = () => {
   `
   )
 
-  const sourceUrl = props.wpPage.aclHomeHero.image?.sourceUrl;
-  const heading = props.wpPage.aclHomeHero.heading;
-  const strapline = props.wpPage.aclHomeHero.strapline;
+  const sourceUrl = data.wpPage.acfHomeHero.image?.sourceUrl;
+  const heading = data.wpPage.acfHomeHero.heading;
+  const strapline = data.wpPage.acfHomeHero.strapline;
   
   return (
     <HeroSection style={{ background: sourceUrl ? `url(${sourceUrl}) no-repeat` : `transparent` }}>

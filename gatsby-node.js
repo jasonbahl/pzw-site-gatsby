@@ -25,6 +25,25 @@ exports.createPages = ({ graphql, actions }) => {
           allWpPage {
             edges {
               node {
+                acfFlexibleContent {
+                  fieldGroupName
+                  flexibleContent {
+                    __typename
+                    ... on WpPage_Acfflexiblecontent_FlexibleContent_Hero {
+                      fieldGroupName
+                      heroText
+                    }
+                    ... on WpPage_Acfflexiblecontent_FlexibleContent_Promos {
+                      fieldGroupName
+                      promo {
+                        ... on WpPage_Acfflexiblecontent_FlexibleContent_Promos_Promo_PromoCard {
+                          fieldGroupName
+                          promotext
+                        }
+                      }
+                    }
+                  }
+                }
                 content
                 id
                 slug

@@ -83,7 +83,7 @@ const SubNavLink = styled(Link)`
 `
 
 const MainNav = () => {
-  const props = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query MainNavQuery {
       allWpMenu(filter: {name: {eq: "Main nav"}}) {
         edges {
@@ -112,7 +112,7 @@ const MainNav = () => {
   
   return (
     <MainNavUl>
-      {props.allWpMenu.edges[0].node.menuItems.nodes.map(item => (
+      {data.allWpMenu.edges[0].node.menuItems.nodes.map(item => (
         // TODO: refactor this fragment
         <>
           {item.parentId === null ?

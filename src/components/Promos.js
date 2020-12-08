@@ -22,10 +22,10 @@ const Promo = styled.div`
 `
 
 const Promos = () => {
-  const props = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query PromosQuery {
       wpPage(slug: {eq: "home"}) {
-        aclPromo {
+        acfPromo {
           card {
             teaser
             title
@@ -46,12 +46,12 @@ const Promos = () => {
   `
   )
 
-  // const sourceUrl = props.wpPage.aclHomeHero.image?.sourceUrl;
+  // const sourceUrl = data.wpPage.acfHomeHero.image?.sourceUrl;
   
   return (
     <PromosWrapper>
-      {props.wpPage.aclPromo.card.map(card => (
-        <Promo key={card.image.id}>
+      {data.wpPage.acfPromo.card.map((card, index) => (
+        <Promo key={index}>
           <p>{card.title}</p>
           <p>{card.teaser}</p>
           <a href={card.cta?.url} target={card.cta?.target}>{card.cta?.title}</a>

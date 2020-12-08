@@ -20,13 +20,13 @@ const SiteInfo = () => (
         }
       }
     }
-  `} render={props => (
+  `} render={data => (
     <SiteInfoWrapper>
       <div>
-        {props.allWp.edges[0].node.generalSettings.title}
+        {data.allWp.edges[0].node.generalSettings.title}
       </div>
       <div>
-        {props.allWp.edges[0].node.generalSettings.description}
+        {data.allWp.edges[0].node.generalSettings.description}
       </div>
     </SiteInfoWrapper>
   )} />

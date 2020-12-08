@@ -26,10 +26,10 @@ const ImpactIcon = styled.div`
 `
 
 const Impacts = () => {
-  const props = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query ImpactsQuery {
       wpPage(slug: {eq: "home"}) {
-        aclImpacts {
+        acfImpacts {
           impactheading
           impact {
             icon {
@@ -48,10 +48,10 @@ const Impacts = () => {
   
   return (
     <>
-      <h2>{props.wpPage.aclImpacts.impactheading}</h2>
+      <h2>{data.wpPage.acfImpacts.impactheading}</h2>
       <ImpactWrapper>
-        {props.wpPage.aclImpacts.impact.map(impact => (
-          <div key={impact.icon.id}>
+        {data.wpPage.acfImpacts.impact.map((impact, index) => (
+          <div key={index}>
             <ImpactIcon className={impact.icon.slug}>
               <img src={impact.icon.sourceUrl} alt="" />
             </ImpactIcon>
