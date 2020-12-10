@@ -46,6 +46,37 @@ exports.createPages = ({ graphql, actions }) => {
                 }
                 content
                 id
+                seo {
+                  metaDesc
+                  metaKeywords
+                  metaRobotsNofollow
+                  metaRobotsNoindex
+                  opengraphAuthor
+                  opengraphDescription
+                  opengraphImage {
+                    altText
+                    sourceUrl
+                  }
+                  opengraphModifiedTime
+                  opengraphPublishedTime
+                  opengraphPublisher
+                  opengraphSiteName
+                  opengraphTitle
+                  opengraphType
+                  opengraphUrl
+                  schema {
+                    articleType
+                    pageType
+                    raw
+                  }
+                  title
+                  twitterDescription
+                  twitterImage {
+                    altText
+                    sourceUrl
+                  }
+                  twitterTitle
+                }
                 slug
                 template {
                   templateName

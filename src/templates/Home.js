@@ -8,9 +8,5 @@ import FlexibleContent from '../components/FlexibleContent';
 export default ({pageContext}) => (
   <Layout>
     <pre>Template: <i>{pageContext.template.templateName}</i></pre>
-    <FlexibleContent />
-    <HomeHero />
-    <div dangerouslySetInnerHTML={{__html: pageContext.content}} />
-    <Impacts />
   </Layout>
 );

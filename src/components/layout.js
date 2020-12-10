@@ -6,6 +6,7 @@ import Head from './head';
 import GlobalStyles from '../utils/globalStyles';
 import GutenbergPatterns from '../utils/gutenbergPatterns';
 import TopBar from './TopBar';
+import Banner from './Banner';
 import FooterBar from './FooterBar';
 
 const LayoutWrapper = styled.div`
@@ -20,14 +21,15 @@ const Main = styled.main`
   
 `
 
-const Layout = ({ children }) => (
+const Layout = ({ children, pageContext }) => (
   <>
-    <SEO />
+    <SEO pageContext={pageContext} />
     <Head />
     <GlobalStyles />
     <GutenbergPatterns />
     <LayoutWrapper>
       <TopBar />
+      <Banner />
       <Main>
         {children}
       </Main>

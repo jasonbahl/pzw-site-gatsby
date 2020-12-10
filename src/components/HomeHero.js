@@ -36,13 +36,6 @@ const HomeHero = () => {
     query HomeHeroQuery {
       wpPage(slug: {eq: "home"}) {
         id
-        acfHomeHero {
-          heading
-          image {
-            sourceUrl
-          }
-          strapline
-        }
       }
     }
   `

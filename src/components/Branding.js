@@ -12,10 +12,18 @@ const LogoWrapper = styled.div`
 const Branding = () => {
   const data = useStaticQuery(graphql`
     query BrandingQuery {
-      wpMediaItem(slug: {eq: "main_logo"}) {
-        altText
-        slug
-        sourceUrl
+      allWp {
+        edges {
+          node {
+            seo {
+              schema {
+                companyLogo {
+                  sourceUrl
+                }
+              }
+            }
+          }
+        }
       }
     }
   `
@@ -24,8 +32,7 @@ const Branding = () => {
   return (
     <LogoWrapper>
       <Link to="/">
-        {/* <img src={data.wpMediaItem.sourceUrl} alt={data.wpMediaItem.altText} alt="" /> */}
-        <img src="http://localhost:8888/wp-content/uploads/2020/11/main_logo.png"  alt="" />
+        <img src={data.allWp.edges[0].node.seo.schema.companyLogo.sourceUrl} alt="" />
       </Link>
     </LogoWrapper>
   )

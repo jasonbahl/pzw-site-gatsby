@@ -32,3 +32,8 @@ export const listReset = css`
   margin: 0;
   padding: 0;
 `;
+
+export const transitions = {
+  DURATION: '200ms',
+  TIMING: 'ease-in-out',
+}

@@ -59,6 +59,7 @@ const SubNavUl = styled.ul`
   padding: 0;
   position: absolute;
   left: -12px;
+  z-index: 1000;
 `
 
 const SubNavLi = styled.li`
@@ -85,26 +86,26 @@ const SubNavLink = styled(Link)`
 const MainNav = () => {
   const data = useStaticQuery(graphql`
     query MainNavQuery {
-      allWpMenu(filter: {name: {eq: "Main nav"}}) {
-        edges {
-          node {
-            menuItems {
+      wpMenu(id: {eq: "dGVybToy"}) {
+        id
+        menuItems {
+          nodes {
+            cssClasses
+            id
+            label
+            url
+            parentId
+            childItems {
               nodes {
+                cssClasses
                 id
                 label
                 url
-                parentId
-                childItems {
-                  nodes {
-                    id
-                    label
-                    url
-                  }
-                }
               }
             }
           }
         }
+        name
       }
     }
   `
@@ -112,7 +113,7 @@ const MainNav = () => {
   
   return (
     <MainNavUl>
-      {data.allWpMenu.edges[0].node.menuItems.nodes.map(item => (
+      {data.wpMenu?.menuItems.nodes.map(item => (
         // TODO: refactor this fragment
         <>
           {item.parentId === null ?

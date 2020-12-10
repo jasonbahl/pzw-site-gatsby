@@ -25,22 +25,7 @@ const Promos = () => {
   const data = useStaticQuery(graphql`
     query PromosQuery {
       wpPage(slug: {eq: "home"}) {
-        acfPromo {
-          card {
-            teaser
-            title
-            cta {
-              target
-              title
-              url
-            }
-            image {
-              altText
-              id
-              sourceUrl
-            }
-          }
-        }
+        id
       }
     }
   `

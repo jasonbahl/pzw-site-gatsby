@@ -1,51 +1,86 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
+import { graphql, useStaticQuery } from  'gatsby'
 import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
+function SEO({ meta, pageContext }) {
+  const data = useStaticQuery(graphql`
+    query SEOQuery {
+      wp {
+        allSettings {
+          generalSettingsDescription
+          generalSettingsLanguage
+          generalSettingsTitle
+          generalSettingsUrl
+        }
+        seo {
+          openGraph {
+            defaultImage {
+              altText
+              sourceUrl
+            }
+          }
+          schema {
+            companyLogo {
+              altText
+              sourceUrl
+            }
+          }
+          social {
+            facebook {
+              defaultImage {
+                altText
+                sourceUrl
+              }
+              url
+            }
+            instagram {
+              url
+            }
+            linkedIn {
+              url
+            }
+            twitter {
+              cardType
+              username
+            }
+            youTube {
+              url
+            }
+          }
+          webmaster {
+            googleVerify
           }
         }
       }
-    `
+    }
+  `
   )
 
-  const metaDescription = description || site.siteMetadata.description
-
+  const lang = data.wp.allSettings.generalSettingsLanguage;
+  
   return (
+
+    console.log(pageContext),
+
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={pageContext.seo.title}
+      // titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: pageContext.seo.metaDesc,
         },
         {
           property: `og:title`,
-          content: title,
+          content: pageContext.seo.opengraphTitle,
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: pageContext.seo.metaDesc,
         },
         {
           property: `og:type`,
@@ -57,15 +92,15 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: pageContext.seo.opengraphPublisher,
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: pageContext.seo.twitterTitle,
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: pageContext.seo.twitterDescription,
         },
       ].concat(meta)}
     />
@@ -73,17 +108,11 @@ function SEO({ description, lang, meta, title }) {
 }
 
 SEO.defaultProps = {
-  lang: `en`,
   meta: [],
-  description: ``,
-  title: ``
 }
 
 SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string,
 }
 
 export default SEO

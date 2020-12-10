@@ -7,7 +7,7 @@ const FlexibleContent = ({ layout }) => {
       <section id={layout?.id} className="page missing">
         <div className="inner">
           Some ACF component is missing, which is not passed as layout. This means something in the schema is broken for
-          this component. Check build console errors.<span>🙅‍</span>
+          this component. Check build console errors.
         </div>
       </section>
     );
@@ -21,7 +21,7 @@ const FlexibleContent = ({ layout }) => {
     return (
       <section id={layout?.id} className="page missing">
         <div className="inner">
-          The ACF component <strong>"{layout.__typename}"</strong> is missing. <span>🙅‍</span>
+          The ACF component <strong>"{layout.__typename}"</strong> is missing.
         </div>
       </section>
     );
