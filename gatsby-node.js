@@ -123,6 +123,43 @@ exports.createPages = ({ graphql, actions }) => {
         graphql(
           `
             {
+              wpMenuItem(url: {eq: "/news"}) {
+                label
+              }
+              wpPage(slug: {eq: "news-seo"}) {
+                id
+                seo {
+                  canonical
+                  metaDesc
+                  metaKeywords
+                  metaRobotsNofollow
+                  metaRobotsNoindex
+                  opengraphAuthor
+                  opengraphDescription
+                  opengraphImage {
+                    altText
+                    sourceUrl
+                  }
+                  opengraphModifiedTime
+                  opengraphPublishedTime
+                  opengraphPublisher
+                  opengraphSiteName
+                  opengraphTitle
+                  opengraphType
+                  opengraphUrl
+                  schema {
+                    articleType
+                    pageType
+                  }
+                  title
+                  twitterDescription
+                  twitterImage {
+                    altText
+                    sourceUrl
+                  }
+                  twitterTitle
+                }
+              }
               allWpPost {
                 edges {
                   node {
@@ -149,6 +186,8 @@ exports.createPages = ({ graphql, actions }) => {
             reject(result.errors)
           }
 
+          const newsMenuItem = result.data.wpMenuItem;
+          const newsSEO = result.data.wpPage.seo;
           const posts = result.data.allWpPost.edges;
           const postsPerPage = 2;
           const numberOfPages = Math.ceil(posts.length / postsPerPage);
@@ -159,6 +198,8 @@ exports.createPages = ({ graphql, actions }) => {
               component: slash(postListTemplate),
               path: index === 0 ? '/news' : `/news/${index + 1}`,
               context: {
+                newsMenuItem,
+                newsSEO,
                 posts: posts.slice(index * postsPerPage, (index * postsPerPage) + postsPerPage),
                 numberOfPages,
                 currentPage: index + 1

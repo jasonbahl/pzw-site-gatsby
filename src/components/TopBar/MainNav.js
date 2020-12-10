@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, useStaticQuery, Link } from  'gatsby'
 import styled from 'styled-components';
 
-import { brand } from '../utils/vars';
+import { brand } from '../../utils/vars';
 
 const MainNavUl = styled.ul`
   color: #fff;

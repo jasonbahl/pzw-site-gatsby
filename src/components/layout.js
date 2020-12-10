@@ -5,9 +5,8 @@ import SEO from './seo';
 import Head from './head';
 import GlobalStyles from '../utils/globalStyles';
 import GutenbergPatterns from '../utils/gutenbergPatterns';
-import TopBar from './TopBar';
-import Banner from './Banner';
-import FooterBar from './FooterBar';
+import TopBar from './TopBar/TopBar';
+import FooterBar from './FooterBar/FooterBar';
 
 const LayoutWrapper = styled.div`
   display: flex;
@@ -29,7 +28,6 @@ const Layout = ({ children, pageContext }) => (
     <GutenbergPatterns />
     <LayoutWrapper>
       <TopBar />
-      <Banner />
       <Main>
         {children}
       </Main>

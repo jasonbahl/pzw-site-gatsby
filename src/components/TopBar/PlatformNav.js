@@ -2,50 +2,49 @@ import React from 'react';
 import { graphql, useStaticQuery } from  'gatsby'
 import styled from 'styled-components';
 
-import iconSocialTwitter from '../images/iconSocialTwitter.png';
-import iconSocialFacebook from '../images/iconSocialFacebook.png';
-import iconSocialInstagram from '../images/iconSocialInstagram.png';
+import { brand } from '../../utils/vars';
 
 const NavUl = styled.ul`
   color: #fff;
   list-style-type: none;
-  margin: 0;
-  padding: 0 10px;
+  margin: 0 0 0 auto;
+  padding: 0;
 `
 
 const NavLi = styled.li`
   display: inline-block;
-  margin: 0 5px;
 `
 
 const NavLink = styled.a`
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 40px;
   color: #fff;
   display: block;
-  height: 40px;
-  padding: 0 5px;
-  text-indent: -9999px;
-  width: 40px;
+  margin-left: 10px;
+  padding: 10px;
+  text-decoration: none;
 
-  &.social-twitter {
-    background-image: url(${iconSocialTwitter});
+  &.btn-callout-primary {
+    background: ${brand.SECONDARY};
+
+    &:focus,
+    &:hover {
+      background: ${brand.SECONDARY_MEDIUM};
+    }
   }
 
-  &.social-facebook {
-    background-image: url(${iconSocialFacebook});
-  }
+  &.btn-callout-secondary {
+    background: ${brand.PRIMARY_LIGHT};
 
-  &.social-instagram {
-    background-image: url(${iconSocialInstagram});
+    &:focus,
+    &:hover {
+      background: ${brand.PRIMARY_MEDIUM};
+    }
   }
 `
 
-const SocialNav = () => {
+const PlatformNav = () => {
   const data = useStaticQuery(graphql`
-    query SocialNavQuery {
-      wpMenu(id: {eq: "dGVybTo0"}) {
+    query PlatformNavQuery {
+      wpMenu(id: {eq: "dGVybTo1"}) {
         id
         menuItems {
           nodes {
@@ -75,4 +74,4 @@ const SocialNav = () => {
 
 };
 
-export default SocialNav;
+export default PlatformNav;

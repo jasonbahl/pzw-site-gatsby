@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { brand } from '../utils/vars';
+import { brand } from '../../utils/vars';
 
 import Branding from './Branding';
 import SocialNav from './SocialNav';
 import MainNav from './MainNav';
 import PlatformNav from './PlatformNav';
+import Banner from './Banner';
 
 const Header = styled.header`
   align-items: center;
@@ -19,12 +20,15 @@ const Header = styled.header`
 `
 
 const TopBar = () => (
-  <Header>
-    <Branding />
-    <SocialNav />
-    <MainNav />
-    <PlatformNav />
-  </Header>
+  <>
+    <Header>
+      <Branding />
+      <SocialNav />
+      <MainNav />
+      <PlatformNav />
+    </Header>
+    <Banner />
+  </>
 )
 
 export default TopBar;

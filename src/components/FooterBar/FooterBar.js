@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import FooterNav from './FooterNav';
 
-import { brand } from '../utils/vars'
+import { brand } from '../../utils/vars'
 
 const Footer = styled.footer`
   background: ${brand.PRIMARY};
