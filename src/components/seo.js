@@ -60,9 +60,6 @@ function SEO({ meta, pageContext }) {
   const lang = data.wp.allSettings.generalSettingsLanguage;
   
   return (
-
-    console.log(pageContext),
-
     <Helmet
       htmlAttributes={{
         lang,

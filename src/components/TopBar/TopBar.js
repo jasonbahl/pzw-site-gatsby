@@ -7,7 +7,7 @@ import Branding from './Branding';
 import SocialNav from './SocialNav';
 import MainNav from './MainNav';
 import PlatformNav from './PlatformNav';
-import Banner from './Banner';
+import DonateBanner from './DonateBanner';
 
 const Header = styled.header`
   align-items: center;
@@ -27,7 +27,7 @@ const TopBar = () => (
       <MainNav />
       <PlatformNav />
     </Header>
-    <Banner />
+    <DonateBanner />
   </>
 )
 

@@ -28,7 +28,6 @@ const PostList = ({ meta, pageContext }) => (
   <Layout pageContext={pageContext}>
     <Helmet
       title={pageContext.newsSEO?.title}
-      // titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
           name: `description`,

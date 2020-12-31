@@ -26,6 +26,7 @@ const NavLi = styled.li`
     right: -12px;
   }
 
+  &:focus-within,
   &:hover {
 
     ul {

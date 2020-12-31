@@ -2,7 +2,6 @@
 
 import { createGlobalStyle } from 'styled-components';
 import { fonts } from './vars';
-// import { media } from './media';
 
 const GlobalStyles = createGlobalStyle`
 
@@ -67,6 +66,10 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     background-color: transparent;
+  }
+
+  a:hover {
+    text-decoration: none;
   }
 
   abbr[title] {

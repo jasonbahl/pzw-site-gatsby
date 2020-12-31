@@ -4,7 +4,7 @@
 **/
 
 import { createGlobalStyle } from 'styled-components';
-import { brand, fonts, listReset, transitions } from './vars';
+import { brand, colours, fonts, listReset, transitions } from './vars';
 import { media } from './media';
 
 const GutenbergPatterns = createGlobalStyle`
@@ -31,11 +31,14 @@ const GutenbergPatterns = createGlobalStyle`
   }
 
   .has-small-font-size {
-    font-size: 80%;
+
+    ${media.medium`
+      font-size: 80%;
+    `}
   }
 
   .has-white-color {
-    color: #fff;
+    color: ${colours.WHITE};
   }
 
   .has-text-align-center {
@@ -50,46 +53,132 @@ const GutenbergPatterns = createGlobalStyle`
   .blocks-gallery-item img {
     max-width: 100%;
   }
+  
+  .has-apple-background-color {
+    background-color: ${colours.APPLE};
+  }
+  .has-apple-color {
+    color: ${colours.APPLE};
+  }
+  
+  .has-atlantis-background-color {
+    background-color: ${colours.ATLANTIS};
+  }
+  .has-atlantis-color {
+    color: ${colours.ATLANTIS};
+  }
+  
+  .has-deep-blush-background-color {
+    background-color: ${colours.DEEP_BLUSH};
+  }
+  .has-deep-blush-color {
+    color: ${colours.DEEP_BLUSH};
+  }
+  
+  .has-dove-gray-background-color {
+    background-color: ${colours.DOVE_GRAY};
+  }
+  .has-dove-gray-color {
+    color: ${colours.DOVE_GRAY};
+  }
+  
+  .has-gallery-background-color {
+    background-color: ${colours.GALLERY};
+  }
+  .has-gallery-color {
+    color: ${colours.GALLERY};
+  }
 
-/**
-==========================================================================
-  Headers
-========================================================================== */
+  .has-honey-flower-background-color {
+    background-color: ${colours.HONEY_FLOWER};
+  }
+  .has-honey-flower-color {
+    color: ${colours.HONEY_FLOWER};
+  }
+  
+  .has-silver-background-color {
+    background-color: ${colours.SILVER};
+  }
+  .has-silver-color {
+    color: ${colours.SILVER};
+  }
+  
+  .has-tundora-background-color {
+    background-color: ${colours.TUNDORA};
+  }
+  .has-tundora-color {
+    color: ${colours.TUNDORA};
+  }
+  
+  .has-white-background-color {
+    background-color: ${colours.WHITE};
+  }
+  .has-white-color {
+    color: ${colours.WHITE};
+  }
+  
+  .has-wild-willow-background-color {
+    background-color: ${colours.WILD_WILLOW};
+  }
+  .has-wild-willow-color {
+    color: ${colours.WILD_WILLOW};
+  }
 
-.wp-block-cover {
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1.5rem;
+  /**
+  ==========================================================================
+    Layout
+  ========================================================================== */
 
-  .wp-block-cover__inner-container {
-    margin: auto;
+  .wp_blocks > div {
     padding: 0 20px;
+  }
 
-    .hero {
-    
-      p {
 
-        ${media.medium`
-          margin-right: auto;
-          margin-left: auto;
-          width: 50%;
-        `}
-      }
-          
-      .wp-block-buttons {
-        display: flex;
-        flex-wrap: wrap;
-      }
+  /**
+  ==========================================================================
+    Headers
+  ========================================================================== */
 
-      ${media.medium`
+  .wp-block-cover {
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+
+    .wp-block-cover__inner-container {
+      margin: auto;
+
+      .hero {
+      
+        p {
+
+          ${media.medium`
+            margin-right: auto;
+            margin-left: auto;
+            width: 70vw;
+          `}
+
+          ${media.large`
+            margin-right: auto;
+            margin-left: auto;
+            width: 60%;
+          `}
+        }
+            
         .wp-block-buttons {
+          display: flex;
+          flex-wrap: wrap;
           justify-content: center;
         }
-      `}
+      }
     }
   }
-}
+
+  /* for exploding margins on only child h* tags inside parents with background colour set */
+  .wp-block-group[class~="has-background"] {
+    display: flex;
+    flex-direction: column;
+  }
 
   /**
   ==========================================================================
@@ -97,12 +186,15 @@ const GutenbergPatterns = createGlobalStyle`
   ========================================================================== */
 
   .wp-block-button {
-    margin-right: 1rem;
     margin-bottom: 1rem;
+
+    + .wp-block-button {
+      margin-left: 1rem;
+    }
   }
 
   .wp-block-button__link {
-    background: ${brand.SECONDARY};
+    ${'' /* background: ${brand.SECONDARY}; */}
     display: inline-block;
     padding: 10px 15px;
     text-decoration: none;
@@ -121,21 +213,31 @@ const GutenbergPatterns = createGlobalStyle`
     Columns
   ========================================================================== */
 
-  .wp-block-group .wp-block-columns {
-    margin-bottom: 1.5rem;
+  .wp-block-group {
 
-    ${media.medium`
-      display: flex;
-      justify-content: space-between;
-      margin: 0 -1rem;
-    `}
-
-    .wp-block-column {
+    .wp-block-columns {
+      margin-bottom: 1.5rem;
 
       ${media.medium`
-        flex: 1 1 50%;
-        margin: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
       `}
+
+      .wp-block-column {
+
+        ${media.medium`
+          flex: 1 1 0;
+        `}
+
+        > .wp-block-group {
+          padding: 0 10%;
+        }
+
+        .wp-block-image {
+          margin-bottom: 1.5rem;
+        }
+      }
     }
   }
 
@@ -147,24 +249,27 @@ const GutenbergPatterns = createGlobalStyle`
   }
 
   .wp-block-columns.promos {
-    display: flex;
-    justify-content: center;
+
+    ${media.medium`
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    `}
 
     .wp-block-column {
-      flex-basis: 25%;
-      margin: 0 15px;
+      margin-bottom: 20px;
+
+      ${media.medium`
+        flex-basis: 25%;
+        margin: 0 15px;
+      `}
     }
           
     .wp-block-buttons {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
     }
-
-    ${media.medium`
-      .wp-block-buttons {
-        justify-content: center;
-      }
-    `}
 
     .wp-block-image {
 
@@ -175,14 +280,39 @@ const GutenbergPatterns = createGlobalStyle`
   }
 
   .wp-block-group.promo-card {
-    background: rgba(204, 204, 204, 0.85);
+    /* background: rgba(204, 204, 204, 0.85); */
+    height: 100%;
 
     .wp-block-group__inner-container {
-      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 0 20px;
+
+      > *:first-child {
+        margin-top: 20px;
+        margin-bottom: auto;
+
+        + * {
+          margin-top: 1.5rem;
+        }
+      }
     }
 
     figure {
-      margin: 0 -20px -26px;
+      margin: 0 -20px -6px;
+    }
+  }
+
+  /**
+  ==========================================================================
+    Bio
+  ========================================================================== */
+
+  .wp-block-group.bio {
+
+    .has-medium-font-size {
+      font-family: ${fonts.SERIF}
     }
   }
 
@@ -225,12 +355,16 @@ const GutenbergPatterns = createGlobalStyle`
 
   .wp-block-image {
 
+    &.is-style-rounded img {
+      border-radius: 50%;
+    }
+
     .aligncenter {
       text-align: center;
     }
 
-    .is-style-rounded img {
-      border-radius: 50%;
+    figure {
+      margin: 0;
     }
   }
 

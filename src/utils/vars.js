@@ -3,9 +3,15 @@ import { css } from 'styled-components';
 
 export const colours = {
   APPLE: '#499a3c',
+  ATLANTIS: '#98CA3D;',
   DEEP_BLUSH: '#eb618a',
-  WILD_WILLOW: '#aecc66',
+  DOVE_GRAY: '#707070',
+  GALLERY: '#f0f0f0',
   HONEY_FLOWER: '#5a2483',
+  SILVER: '#cccccc',
+  TUNDORA: '#424242',
+  WHITE: '#ffffff',
+  WILD_WILLOW: '#aecc66',
 }
 
 export const brand = {
