@@ -87,7 +87,7 @@ const SubNavLink = styled(Link)`
 const MainNav = () => {
   const data = useStaticQuery(graphql`
     query MainNavQuery {
-      wpMenu(id: {eq: "dGVybToy"}) {
+      wpMenu(name: {eq: "Main nav"}) {
         id
         menuItems {
           nodes {

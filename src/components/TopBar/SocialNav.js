@@ -45,7 +45,7 @@ const NavLink = styled.a`
 const SocialNav = () => {
   const data = useStaticQuery(graphql`
     query SocialNavQuery {
-      wpMenu(id: {eq: "dGVybTo0"}) {
+      wpMenu(name: {eq: "Social"}) {
         id
         menuItems {
           nodes {

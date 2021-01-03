@@ -44,7 +44,7 @@ const NavLink = styled.a`
 const PlatformNav = () => {
   const data = useStaticQuery(graphql`
     query PlatformNavQuery {
-      wpMenu(id: {eq: "dGVybTo1"}) {
+      wpMenu(name: {eq: "Platform"}) {
         id
         menuItems {
           nodes {

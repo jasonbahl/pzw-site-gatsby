@@ -45,7 +45,7 @@ const NavLink = styled(Link)`
 const FooterNav = () => {
   const data = useStaticQuery(graphql`
     query FooterNavQuery {
-      wpMenu(id: {eq: "dGVybToz"}) {
+      wpMenu(name: {eq: "Footer"}) {
         id
         menuItems {
           nodes {
