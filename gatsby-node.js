@@ -22,7 +22,7 @@ exports.createPages = ({ graphql, actions }) => {
     graphql(
       `
         {
-          allWpPage(filter: {status: {eq: "publish"}}) {
+          allWpPage {
             edges {
               node {
                 acfFlexibleContent {
