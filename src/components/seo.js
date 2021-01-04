@@ -64,20 +64,20 @@ function SEO({ meta, pageContext }) {
       htmlAttributes={{
         lang,
       }}
-      title={pageContext.seo?.title}
+      title={pageContext?.seo?.title}
       // titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
           name: `description`,
-          content: pageContext.seo?.metaDesc,
+          content: pageContext?.seo?.metaDesc,
         },
         {
           property: `og:title`,
-          content: pageContext.seo?.opengraphTitle,
+          content: pageContext?.seo?.opengraphTitle,
         },
         {
           property: `og:description`,
-          content: pageContext.seo?.metaDesc,
+          content: pageContext?.seo?.metaDesc,
         },
         {
           property: `og:type`,
@@ -89,15 +89,15 @@ function SEO({ meta, pageContext }) {
         },
         {
           name: `twitter:creator`,
-          content: pageContext.seo?.opengraphPublisher,
+          content: pageContext?.seo?.opengraphPublisher,
         },
         {
           name: `twitter:title`,
-          content: pageContext.seo?.twitterTitle,
+          content: pageContext?.seo?.twitterTitle,
         },
         {
           name: `twitter:description`,
-          content: pageContext.seo?.twitterDescription,
+          content: pageContext?.seo?.twitterDescription,
         },
       ].concat(meta)}
     />
