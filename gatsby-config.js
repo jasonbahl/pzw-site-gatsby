@@ -9,7 +9,6 @@ module.exports = {
       resolve: `gatsby-source-wordpress-experimental`,
       options: {
         url: `http://plan-zheroes.flywheelsites.com/graphql`,
-        presets: null
       },
     },
     `gatsby-plugin-react-helmet`,
